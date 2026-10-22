@@ -23,7 +23,7 @@ Somos una empresa de Base Tecnológica, fundada en el año 2004, donde nuestros 
 - Peritos Informáticos matriculados a nivel nacional: aseguramiento de evidencia digital, análisis forense, recuperación de datos, asesoría en protección de datos personales bajo RGPD y normas ISO 27000.
 - Portabilidad numérica de líneas fijas de Telecom y Telefónica.
 
-## Patrocinadores
+## Trabajamos con
 
 Poly, Yealink, Yeastar, Digium/Sangoma, Grandstream, AudioCodes, Loway.
 

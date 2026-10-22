@@ -103,6 +103,12 @@ video {
   max-width: 100%;
 }
 
+/* width/height en el HTML reservan el espacio (sin CLS); especificidad 0
+   para que cualquier regla con clase que fije la altura siga ganando */
+:where(img[width][height]) {
+  height: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;

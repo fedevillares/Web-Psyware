@@ -13,41 +13,44 @@
 <meta property="og:title" content="Autodiagnóstico de Ciberseguridad | Psyware SSL" />
 <meta property="og:description" content="Autoevaluación gratuita de ciberseguridad para tu empresa. 25 preguntas, resultado orientativo automático." />
 <meta property="og:url" content="https://www.psyware.ar/diagnostico-ciberseguridad.html" />
-<meta property="og:image" content="https://www.psyware.ar/assets/img/psyware-logo-dark.png" />
+<meta property="og:image" content="https://www.psyware.ar/assets/img/og-psyware.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Autodiagnóstico de Ciberseguridad | Psyware SSL" />
 <meta name="twitter:description" content="Autoevaluación gratuita de ciberseguridad para tu empresa. Resultado orientativo automático." />
-<meta name="twitter:image" content="https://www.psyware.ar/assets/img/psyware-logo-dark.png" />
+<meta name="twitter:image" content="https://www.psyware.ar/assets/img/og-psyware.jpg" />
 <link rel="icon" href="assets/img/psyware-favicon.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css?v=20260731" />
+<link rel="stylesheet" href="css/styles.css?v=20261020" />
 <link rel="stylesheet" href="css/animations.css?v=20260731" />
 <link rel="stylesheet" href="css/responsive.css?v=20260731" />
-<link rel="stylesheet" href="css/diagnostico.css" />
+<link rel="stylesheet" href="css/diagnostico.css?v=20261022" />
+<link rel="stylesheet" href="css/chrome.css?v=20261019" />
 </head>
 <body>
 <a class="skip-link" href="#quiz">Saltar al cuestionario</a>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
-<header class="navbar" id="navbar">
-  <div class="nav-container">
-    <a class="nav-logo" href="index.html">
-      <img class="nav-logo__img nav-logo__img--white" src="assets/img/psyware-logo-white.png" alt="Psyware SSL" />
-      <img class="nav-logo__img nav-logo__img--dark" src="assets/img/psyware-logo-dark.png" alt="Psyware SSL" />
+<header class="site-header is-top" id="navbar">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="index.html" aria-label="Psyware SSL, inicio">
+      <picture><source srcset="assets/img/psyware-logo-white.webp" type="image/webp"><img src="assets/img/psyware-logo-white.png" alt="Psyware SSL" width="1505" height="296" /></picture>
     </a>
-    <nav class="nav-menu" id="navMenu">
+    <nav class="site-nav" id="navMenu" aria-label="Principal">
       <a href="index.html">Inicio</a>
       <a href="acerca-de-nosotros.html">Acerca de Nosotros</a>
       <a href="productos-y-servicios.html">Productos y Servicios</a>
       <a href="cursos.html">Cursos</a>
-      <a href="diagnosticos.html" class="is-active">Diagnóstico</a>
+      <a href="diagnosticos.html" aria-current="page">Diagnóstico</a>
       <a href="prensa.html">Prensa</a>
       <a href="contacto.html">Contacto</a>
     </nav>
-    <a class="btn btn-white nav-cta" href="contacto.html">Contactanos</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <a class="ui-btn ui-btn--primary ui-btn--sm site-header__cta" href="https://wa.me/5493412280272?text=Hola%20Psyware%2C%20quiero%20pedir%20un%20diagn%C3%B3stico." target="_blank" rel="noopener" aria-label="Pedí un diagnóstico por WhatsApp"><span class="cta-long">Pedí un diagnóstico</span><span class="cta-short" aria-hidden="true">Diagnóstico</span></a>
+    <button class="site-header__toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span>
     </button>
   </div>
 </header>
@@ -108,7 +111,7 @@
     <div class="diag-counts" id="counts"></div>
     <div class="diag-res-foot">
       <a href="https://wa.me/5493412280272?text=Hola%20Psyware,%20hice%20el%20autodiagn%C3%B3stico%20y%20quiero%20una%20revisi%C3%B3n%20profesional" target="_blank" rel="noopener" class="diag-btn">Quiero una revisión profesional →</a>
-      <button type="button" class="diag-restart" id="restartBtn">↻ Empezar de nuevo</button>
+      <button type="button" class="diag-restart" id="restartBtn">Empezar de nuevo</button>
     </div>
   </div>
 </section>
@@ -118,60 +121,66 @@
 
 <noscript><p style="text-align:center;padding:120px 24px;color:#4a4a4a">Este autodiagnóstico necesita JavaScript activado para funcionar. Podés escribirnos directamente a contacto@psyware.ar.</p></noscript>
 
-<footer class="footer">
-  <div class="container footer__grid">
-    <div class="footer__brand">
-      <img class="nav-logo__img" src="assets/img/psyware-logo-white.png" alt="Psyware SSL" />
-      <p>Soluciones en seguridad informática, telecomunicaciones y capacitación para empresas que no pueden fallar.</p>
-      <div class="footer__contact">
-        <a href="tel:+543412419258">+54 341 2419258</a>
-        <a href="tel:+543426460027">+54 342 6460027</a>
-        <a href="https://wa.me/5493412280272" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://maps.app.goo.gl/BehnoAJCyURJMsor6" target="_blank" rel="noopener">España 1116 — S2000DBX Rosario</a>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <picture><source srcset="assets/img/psyware-logo-white.webp" type="image/webp"><img src="assets/img/psyware-logo-white.png" alt="Psyware SSL" width="1505" height="296" loading="lazy" /></picture>
+        <p>Soluciones en seguridad informática, telecomunicaciones y capacitación para empresas que no pueden fallar.</p>
+      </div>
+      <nav aria-label="Sitio">
+        <p class="site-footer__title">Navegación</p>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="acerca-de-nosotros.html">Acerca de Nosotros</a></li>
+          <li><a href="productos-y-servicios.html">Productos y Servicios</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="diagnosticos.html" aria-current="page">Diagnóstico</a></li>
+          <li><a href="prensa.html">Prensa</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="politica-de-privacidad.html">Política de Privacidad</a></li>
+          <li><a href="assets/pdf/brochure-intelix-psyware.pdf" target="_blank" rel="noopener">Descargar Brochure (PDF)</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="site-footer__title">Contacto</p>
+        <ul>
+          <li><a href="tel:+543412419258">+54 341 2419258</a></li>
+          <li><a href="tel:+543426460027">+54 342 6460027</a></li>
+          <li><a href="https://wa.me/5493412280272" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contacto@psyware.ar">contacto@psyware.ar</a></li>
+          <li><a href="https://maps.app.goo.gl/BehnoAJCyURJMsor6" target="_blank" rel="noopener">España 1116 — S2000DBX Rosario</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="site-footer__title">Redes Sociales</p>
+        <ul>
+          <li><a href="https://www.facebook.com/NTLXIngenieria" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/psyware_ssl" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/intelix-ingenieria-&amp;-telecomunicaciones" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/fmvillares" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer__col">
-      <h5>Navegación</h5>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="acerca-de-nosotros.html">Acerca de Nosotros</a></li>
-        <li><a href="productos-y-servicios.html">Productos y Servicios</a></li>
-        <li><a href="cursos.html">Cursos</a></li>
-        <li><a href="diagnosticos.html">Diagnóstico</a></li>
-        <li><a href="prensa.html">Prensa</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="assets/pdf/brochure-intelix-psyware.pdf" target="_blank" rel="noopener">Descargar Brochure (PDF)</a></li>
-      </ul>
+    <div class="site-footer__bottom">
+      <p>&copy; <span id="year">2026</span> Psyware SSL. Todos los derechos reservados.</p>
+      <a class="site-footer__afip" href="http://qr.afip.gob.ar/?qr=Lny1AnEBC1ELZ3IGXMPOgA,," target="_blank" rel="noopener">
+        <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="Data Fiscal AFIP" width="90" height="123" loading="lazy" />
+      </a>
     </div>
-    <div class="footer__col">
-      <h5>Redes Sociales</h5>
-      <ul>
-        <li><a href="https://www.facebook.com/NTLXIngenieria" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://www.instagram.com/psyware_ssl" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/company/intelix-ingenieria-&-telecomunicaciones" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://x.com/fmvillares" target="_blank" rel="noopener">X (Twitter)</a></li>
-      </ul>
-    </div>
-    <div class="footer__col">
-      <h5>Data Fiscal</h5>
-      <div class="footer__badge">
-        <a href="http://qr.afip.gob.ar/?qr=Lny1AnEBC1ELZ3IGXMPOgA,," target="_blank" rel="noopener">
-          <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="Data Fiscal AFIP" loading="lazy" />
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer__bottom">
-    <p>&copy; <span id="year"></span> Psyware SSL. Todos los derechos reservados.</p>
   </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5493412280272" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
-</button>
+<div class="fab">
+  <a class="fab__btn fab__btn--call" href="tel:+543412419258" aria-label="Llamar al +54 341 2419258">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab__btn fab__btn--wa" href="https://wa.me/5493412280272" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+  </a>
+</div>
 
-<script src="js/main.js?v=20260731"></script>
+<script src="js/main.js?v=20261020"></script>
 <script>
 (function(){
   var QDATA = [{"b": "Gestión de accesos e identidad", "q": "¿Cómo gestionan las contraseñas de los sistemas críticos (correo, ERP, banco)?", "m": false, "o": ["Cada empleado usa la que quiere, sin reglas", "Hay una política de contraseñas mínima (largo, complejidad)", "Usamos gestor de contraseñas + política obligatoria", "No lo sé / nunca se definió"]}, {"b": "Gestión de accesos e identidad", "q": "¿Tienen habilitada la autenticación en dos pasos (2FA/MFA) en el correo corporativo y sistemas críticos?", "m": false, "o": ["Sí, en todos los sistemas críticos", "Solo en algunos (ej. correo, pero no en el ERP)", "No, usamos solo usuario y contraseña", "No sé qué es 2FA/MFA"]}, {"b": "Gestión de accesos e identidad", "q": "Cuando un empleado se va de la empresa, ¿qué se hace con sus accesos?", "m": true, "o": ["Se desactivan todos los accesos el mismo día", "Se cambia la contraseña compartida (si existía)", "Se revisa que no tenga acceso remoto ni a la nube", "No hay un protocolo definido, queda a criterio de cada área"]}, {"b": "Gestión de accesos e identidad", "q": "¿Los empleados usan la misma cuenta/usuario para tareas administrativas y para uso diario?", "m": false, "o": ["No, hay cuentas separadas para administración y uso normal", "Sí, usan la misma cuenta para todo", "Depende del área o de la persona", "No sé cómo está configurado"]}, {"b": "Protección de dispositivos y redes", "q": "¿Las computadoras y servidores de la empresa tienen antivirus/antimalware actualizado?", "m": false, "o": ["Sí, con licencia activa y actualización automática", "Sí, pero no estoy seguro si está actualizado", "No tenemos antivirus instalado", "Solo en algunos equipos"]}, {"b": "Protección de dispositivos y redes", "q": "¿Con qué frecuencia se instalan las actualizaciones de seguridad (Windows, apps, sistemas)?", "m": false, "o": ["Automáticas, apenas salen", "Se hacen manualmente cada tanto", "Casi nunca se actualizan", "No sé quién es responsable de esto"]}, {"b": "Protección de dispositivos y redes", "q": "¿La red WiFi de la empresa tiene contraseña distinta para visitas y para empleados?", "m": false, "o": ["Sí, redes separadas (invitados / corporativa)", "Todos usan la misma red y contraseña", "No hay WiFi en la empresa", "No lo sé"]}, {"b": "Protección de dispositivos y redes", "q": "¿Usan VPN (red privada virtual) cuando se conectan de forma remota a los sistemas de la empresa?", "m": false, "o": ["Sí, siempre", "Solo algunos empleados o algunas veces", "No usamos VPN, nos conectamos directo", "No sabía que era necesario"]}, {"b": "Respaldo y continuidad", "q": "¿Hacen copias de seguridad (backup) de la información crítica?", "m": false, "o": ["Sí, automáticas y periódicas", "Sí, pero manuales y esporádicas", "No hacemos backup", "No sé si se hace"]}, {"b": "Respaldo y continuidad", "q": "¿Dónde se guardan esas copias de seguridad?", "m": true, "o": ["En un servidor o nube separada del sistema original", "En un disco externo en la misma oficina", "En la misma computadora que se quiere proteger", "No sabría decir dónde están"]}, {"b": "Respaldo y continuidad", "q": "¿Alguna vez probaron restaurar un backup para verificar que funciona?", "m": false, "o": ["Sí, lo probamos periódicamente", "Se hizo una vez, hace tiempo", "Nunca lo probamos", "No sabía que había que probarlo"]}, {"b": "Respaldo y continuidad", "q": "Si hoy se rompe o se infecta el servidor principal, ¿la empresa podría seguir operando?", "m": false, "o": ["Sí, tenemos un plan de continuidad definido", "Podríamos, pero perdiendo tiempo e información", "No, dependemos totalmente de ese equipo", "No lo sabemos, nunca lo evaluamos"]}, {"b": "Factor humano y capacitación", "q": "¿El personal recibió alguna capacitación sobre ciberseguridad (phishing, contraseñas, etc.)?", "m": false, "o": ["Sí, capacitación periódica", "Sí, una sola vez al ingresar", "No, nunca se capacitó a nadie", "No lo sé"]}, {"b": "Factor humano y capacitación", "q": "¿Los empleados saben identificar un correo de phishing (suplantación de identidad)?", "m": false, "o": ["Sí, la mayoría los identifica y reporta", "Algunos sí, otros no", "No, nadie sabría distinguirlo", "No lo sé"]}, {"b": "Factor humano y capacitación", "q": "Si un empleado recibe un correo sospechoso pidiendo una transferencia urgente, ¿sabe a quién avisar o qué protocolo seguir?", "m": true, "o": ["Sí, hay un procedimiento claro de verificación", "Se verifica llamando por teléfono a la persona que \"pide\" el dinero", "No hay protocolo, se actúa según el criterio de cada uno", "No lo sé"]}, {"b": "Factor humano y capacitación", "q": "¿Usan pendrives o dispositivos externos de origen desconocido en las computadoras de la empresa?", "m": false, "o": ["No, está prohibido y bloqueado técnicamente", "Está prohibido pero no se controla", "Se usan libremente", "No hay política al respecto"]}, {"b": "Gestión de proveedores y terceros", "q": "¿Los proveedores externos (contadores, IT tercerizado, consultores) tienen acceso a sus sistemas?", "m": false, "o": ["Sí, con accesos limitados y controlados", "Sí, con accesos amplios sin restricción", "No tienen acceso a nuestros sistemas", "No sé qué accesos tienen los proveedores"]}, {"b": "Gestión de proveedores y terceros", "q": "¿Revisan qué hacen los proveedores con los datos que les comparten (facturación, nómina, clientes)?", "m": false, "o": ["Sí, tenemos acuerdos de confidencialidad y control", "Confiamos, pero no hay control formal", "No nos preocupamos por eso", "No lo sé"]}, {"b": "Datos sensibles y cumplimiento", "q": "¿Saben qué datos sensibles maneja la empresa (datos de clientes, tarjetas, historia clínica, etc.)?", "m": false, "o": ["Sí, están identificados y clasificados", "Tenemos una idea general, no está documentado", "No sabemos exactamente qué datos manejamos", "No aplica a nuestro rubro"]}, {"b": "Datos sensibles y cumplimiento", "q": "¿La empresa cumple con la Ley de Protección de Datos Personales (Ley 25.326 en Argentina) o normativa equivalente?", "m": false, "o": ["Sí, tenemos políticas de privacidad y consentimientos", "Estamos en proceso de adecuación", "No, no lo tenemos contemplado", "No sabía que aplicaba a nuestra empresa"]}, {"b": "Datos sensibles y cumplimiento", "q": "Si se filtraran los datos de sus clientes hoy, ¿sabrían qué pasos legales y técnicos seguir?", "m": false, "o": ["Sí, tenemos un protocolo de respuesta a incidentes", "Tenemos una idea, pero no está formalizado", "No tenemos ni idea de qué hacer", "No lo habíamos pensado"]}, {"b": "Detección y respuesta a incidentes", "q": "¿La empresa tiene forma de detectar si alguien entró sin autorización a sus sistemas?", "m": false, "o": ["Sí, tenemos monitoreo y alertas", "Solo nos enteramos si algo falla visiblemente", "No tenemos ninguna forma de detectarlo", "No lo sé"]}, {"b": "Detección y respuesta a incidentes", "q": "¿Alguna vez sufrieron un incidente de seguridad (virus, hackeo, robo de datos, estafa por correo)?", "m": false, "o": ["No, nunca", "Sí, una vez, y lo resolvimos", "Sí, más de una vez", "No estoy seguro / no lo sabríamos detectar"]}, {"b": "Detección y respuesta a incidentes", "q": "¿Quién es el responsable de la seguridad informática en la empresa?", "m": false, "o": ["Un responsable interno de IT/seguridad definido", "Un proveedor externo contratado para eso", "Nadie en particular, se resuelve cuando surge un problema", "No lo sé"]}, {"b": "Percepción general", "q": "En una escala de confianza, ¿qué tan preparada creés que está tu empresa ante un ciberataque?", "m": false, "o": ["Muy preparada, tenemos controles sólidos", "Medianamente preparada, hay cosas por mejorar", "Poco preparada, sabemos que estamos expuestos", "No tengo forma de saberlo"]}];
@@ -236,13 +245,13 @@
     return {counts:counts, idx:idx, letter:best};
   }
   var LEVELS={
-    A:{txt:'Nivel de madurez alto',color:'var(--blue)',rgb:'1,94,234',title:'🟢 Buenas prácticas implementadas',
+    A:{txt:'Nivel de madurez alto',color:'var(--blue)',rgb:'1,94,234',title:'Buenas prácticas implementadas',
        desc:'Tu empresa tiene controles sólidos de ciberseguridad. Aun así, conviene una revisión periódica: las amenazas evolucionan y lo que hoy protege puede quedar desactualizado.'},
-    B:{txt:'Nivel intermedio',color:'#e8b455',rgb:'232,180,85',title:'🟡 Controles básicos, con brechas',
+    B:{txt:'Nivel intermedio',color:'#e8b455',rgb:'232,180,85',title:'Controles básicos, con brechas',
        desc:'Hay una base de seguridad, pero con huecos que un atacante podría aprovechar. Vale la pena cerrar esas brechas antes de que se conviertan en un incidente.'},
-    C:{txt:'Nivel de riesgo alto',color:'var(--pink)',rgb:'242,41,91',title:'🔴 Exposición significativa',
+    C:{txt:'Nivel de riesgo alto',color:'var(--pink)',rgb:'242,41,91',title:'Exposición significativa',
        desc:'Tu empresa está expuesta a riesgos concretos. Se recomienda actuar cuanto antes: muchos ataques explotan justamente estas debilidades básicas.'},
-    D:{txt:'Riesgo por desconocimiento',color:'#e8b455',rgb:'232,180,85',title:'⚠️ Puntos ciegos importantes',
+    D:{txt:'Riesgo por desconocimiento',color:'#e8b455',rgb:'232,180,85',title:'Puntos ciegos importantes',
        desc:'El mayor peligro no es lo que falla, sino lo que no se sabe. Predominan las respuestas "no lo sé": un diagnóstico técnico profesional te daría claridad sobre tu situación real.'}
   };
   var WEB3FORMS_KEY = "ae96a81b-fc42-41e3-a4c7-5c16fc1a9ba3";

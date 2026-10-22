@@ -2,16 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "psyware",
+      "name": "psyware-static",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8321"],
-      "port": 8321
-    },
-    {
-      "name": "intelix",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8322", "--directory", "C:/Users/PC-1/Desktop/Intelix WEB"],
-      "port": 8322
+      "runtimeArgs": ["-m", "http.server", "8765"],
+      "port": 8765
     }
   ]
 }

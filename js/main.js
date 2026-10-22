@@ -1,126 +1,113 @@
 /* ============================================================
-   PSYWARE — main.js
-   Navbar scroll state, mobile menu, hero carousel, back-to-top
-   and contact form handling. No dependencies.
+   PSYWARE — main.js (todas las páginas)
+   Header (se oculta al bajar, vuelve al subir), barra de
+   progreso, menú móvil y formulario de contacto. Sin dependencias.
    ============================================================ */
 (() => {
   "use strict";
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   /* ---------------------------------------------------------
-     Sticky navbar
+     Header + barra de progreso (un solo listener de scroll)
      --------------------------------------------------------- */
-  function initNavbar() {
-    const navbar = document.getElementById("navbar");
-    if (!navbar) return;
-    const onScroll = () => navbar.classList.toggle("is-scrolled", window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+  function initHeader() {
+    const header = document.getElementById("navbar");
+    const bar = document.getElementById("scrollProgress");
+    if (!header && !bar) return;
+
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const y = Math.max(0, window.scrollY);
+
+      if (header) {
+        header.classList.toggle("is-top", y < 8);
+        const menuOpen = header.classList.contains("menu-open");
+        const focusInside = header.contains(document.activeElement) && document.activeElement !== document.body;
+        if (!menuOpen && !focusInside) {
+          if (y > lastY + 4 && y > 120) header.classList.add("is-hidden");
+          else if (y < lastY - 4 || y < 120) header.classList.remove("is-hidden");
+        }
+      }
+
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+      }
+
+      lastY = y;
+    };
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+
+    header?.addEventListener("focusin", () => header.classList.remove("is-hidden"));
+    update();
   }
 
   /* ---------------------------------------------------------
-     Mobile menu (animated hamburger)
+     Menú móvil
      --------------------------------------------------------- */
   function initMobileMenu() {
+    const header = document.getElementById("navbar");
     const toggle = document.getElementById("navToggle");
     const menu = document.getElementById("navMenu");
     if (!toggle || !menu) return;
 
-    const closeMenu = () => {
-      toggle.classList.remove("is-open");
-      menu.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
+    /* Con el menú abierto, el resto de la página queda inerte: el Tab
+       no se escapa detrás del overlay y los lectores no lo recorren */
+    const outside = () => [...document.body.children].filter((el) => el !== header && !el.contains(menu) && el.tagName !== "SCRIPT");
+
+    const setOpen = (open) => {
+      toggle.classList.toggle("is-open", open);
+      menu.classList.toggle("is-open", open);
+      header?.classList.toggle("menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      document.body.style.overflow = open ? "hidden" : "";
+      outside().forEach((el) => { el.inert = open; });
+      const lenis = window.__lenis;
+      if (lenis) open ? lenis.stop() : lenis.start();
+      if (open) {
+        header?.classList.remove("is-hidden");
+        menu.querySelector("a")?.focus({ preventScroll: true });
+      }
     };
 
-    const openMenu = () => {
-      toggle.classList.add("is-open");
-      menu.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
-    };
+    toggle.addEventListener("click", () => setOpen(!menu.classList.contains("is-open")));
 
-    toggle.addEventListener("click", () => {
-      const isOpen = menu.classList.contains("is-open");
-      isOpen ? closeMenu() : openMenu();
+    menu.addEventListener("click", (e) => {
+      if (e.target.closest("a")) setOpen(false);
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-
-    window.addEventListener(
-      "resize",
-      debounce(() => {
-        if (window.innerWidth >= 900) closeMenu();
-      }, 150)
-    );
-  }
-
-  /* ---------------------------------------------------------
-     Hero rotating headline carousel
-     --------------------------------------------------------- */
-  function initHeroCarousel() {
-    const track = document.getElementById("heroCarousel");
-    if (!track) return;
-    const slides = Array.from(track.querySelectorAll(".hero__slide"));
-    const dotsWrap = document.getElementById("heroDots");
-    const prevBtn = document.getElementById("heroPrev");
-    const nextBtn = document.getElementById("heroNext");
-    if (!slides.length) return;
-
-    let index = 0;
-    let timer;
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement("span");
-      dot.className = "hero__dot" + (i === 0 ? " is-active" : "");
-      dot.addEventListener("click", () => goTo(i));
-      dotsWrap.appendChild(dot);
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    function render() {
-      slides.forEach((s, i) => s.classList.toggle("is-active", i === index));
-      dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
-    }
-
-    function goTo(i) {
-      index = (i + slides.length) % slides.length;
-      render();
-      restart();
-    }
-
-    function next() {
-      goTo(index + 1);
-    }
-
-    function prev() {
-      goTo(index - 1);
-    }
-
-    function restart() {
-      clearInterval(timer);
-      if (!prefersReducedMotion) {
-        timer = setInterval(next, 5000);
+      if (e.key === "Escape" && menu.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
       }
-    }
+    });
 
-    prevBtn?.addEventListener("click", prev);
-    nextBtn?.addEventListener("click", next);
-    render();
-    restart();
+    window.addEventListener("resize", debounce(() => {
+      if (window.innerWidth >= 1280 && menu.classList.contains("is-open")) setOpen(false);
+    }, 150));
   }
 
   /* ---------------------------------------------------------
-     Scroll reveal (data-reveal / data-stagger)
+     Scroll reveal de las páginas internas (data-reveal / data-stagger)
+     La home usa su propio sistema (home.js) y se excluye.
      --------------------------------------------------------- */
   function initScrollReveal() {
+    if (document.body.classList.contains("home")) return;
     const targets = document.querySelectorAll("[data-reveal], [data-stagger]");
     if (!targets.length) return;
 
-    if (prefersReducedMotion) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       targets.forEach((el) => el.classList.add("is-visible"));
       return;
     }
@@ -139,92 +126,12 @@
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+      /* threshold 0: un bloque más alto que la pantalla (p. ej. el cuerpo
+         de la política en móvil) nunca llegaría a mostrar el 15 % a la vez */
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" }
     );
 
     targets.forEach((el) => observer.observe(el));
-  }
-
-  /* ---------------------------------------------------------
-     Latest news feed (live Xataka RSS, matches original site)
-     Falls back to the static links already in the markup if the
-     feed can't be reached (offline, proxy down, etc).
-     --------------------------------------------------------- */
-  function initNewsFeed() {
-    const list = document.getElementById("newsList");
-    if (!list) return;
-
-    const FEED_URL = "https://www.xataka.com/feedburner.xml";
-
-    function renderItems(items) {
-      const cleaned = items
-        .map((i) => ({ title: i.title && i.title.trim(), link: i.link && i.link.trim() }))
-        .filter((i) => i.title && i.link)
-        .slice(0, 3);
-      if (!cleaned.length) return false;
-
-      const fragment = document.createDocumentFragment();
-      cleaned.forEach(({ title, link }) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = link;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = title;
-        li.appendChild(a);
-        fragment.appendChild(li);
-      });
-      list.replaceChildren(fragment);
-      return true;
-    }
-
-    // Primary: rss2json (CORS-friendly, dedicated RSS API)
-    function viaRss2Json() {
-      const url = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED_URL);
-      return fetch(url, { signal: AbortSignal.timeout(6000) })
-        .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-        .then((data) => {
-          const items = (data.items || []).map((i) => ({ title: i.title, link: i.link }));
-          if (!renderItems(items)) throw new Error("empty rss2json response");
-        });
-    }
-
-    // Fallback: allorigins raw XML proxy
-    function viaAllOrigins() {
-      const url = "https://api.allorigins.win/raw?url=" + encodeURIComponent(FEED_URL);
-      return fetch(url, { signal: AbortSignal.timeout(6000) })
-        .then((res) => (res.ok ? res.text() : Promise.reject(res.status)))
-        .then((xml) => {
-          const doc = new DOMParser().parseFromString(xml, "text/xml");
-          const items = Array.from(doc.querySelectorAll("item")).map((item) => ({
-            title: item.querySelector("title")?.textContent,
-            link: item.querySelector("link")?.textContent,
-          }));
-          if (!renderItems(items)) throw new Error("empty allorigins response");
-        });
-    }
-
-    viaRss2Json().catch(() => viaAllOrigins()).catch(() => {
-      /* keep the static fallback items already in the markup */
-    });
-  }
-
-  /* ---------------------------------------------------------
-     Back to top
-     --------------------------------------------------------- */
-  function initBackToTop() {
-    const btn = document.getElementById("backToTop");
-    if (!btn) return;
-
-    window.addEventListener(
-      "scroll",
-      () => btn.classList.toggle("is-visible", window.scrollY > 640),
-      { passive: true }
-    );
-
-    btn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-    });
   }
 
   /* ---------------------------------------------------------
@@ -270,9 +177,10 @@
 
       window.location.href = mailtoUrl;
 
+      /* No se resetea el formulario: si no hay cliente de email configurado
+         (webmail, PC de oficina), el usuario no pierde lo que escribió */
       setTimeout(() => {
         submitBtn.textContent = originalLabel;
-        form.reset();
       }, 2500);
     });
   }
@@ -293,14 +201,14 @@
     };
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initNavbar();
+  const start = () => {
+    initHeader();
     initMobileMenu();
-    initHeroCarousel();
     initScrollReveal();
-    initNewsFeed();
-    initBackToTop();
     initContactForm();
     initFooterYear();
-  });
+  };
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
 })();

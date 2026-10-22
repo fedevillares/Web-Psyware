@@ -70,6 +70,14 @@
   gap: var(--sp-6);
 }
 
+/* 3 + 2: la última fila de dos tarjetas ocupa todo el ancho */
+@media (min-width: 981px) {
+  .diag-cards__grid { grid-template-columns: repeat(6, 1fr); }
+  .diag-cards__grid > .dcard { grid-column: span 2; }
+  .diag-cards__grid > .dcard:nth-child(3n+1):nth-last-child(2),
+  .diag-cards__grid > .dcard:nth-child(3n+2):last-child { grid-column: span 3; }
+}
+
 .dcard {
   position: relative;
   display: flex;
@@ -732,4 +740,55 @@
   font-size: 12.5px;
   text-align: center;
   line-height: 1.6;
+}
+
+/* Repaso con respuesta correcta y explicación (autodiagnóstico forense) */
+.diag-review {
+  padding: var(--sp-6) var(--sp-5);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.diag-review__title {
+  font-family: var(--font-nav);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  margin-bottom: var(--sp-4);
+}
+
+.diag-review__item {
+  padding: var(--sp-4) 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+.diag-review__q {
+  font-weight: 600;
+  margin-bottom: var(--sp-2);
+}
+
+.diag-review__ans {
+  margin-bottom: var(--sp-1);
+}
+
+.diag-review__ans b {
+  font-family: var(--font-nav);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-right: var(--sp-2);
+}
+
+.diag-review__ans.is-wrong b { color: var(--pink); }
+.diag-review__ans.is-right b { color: var(--blue); }
+
+.diag-review__exp {
+  color: var(--text-muted);
+  margin-top: var(--sp-2);
+}
+
+.diag-counts--domains {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }

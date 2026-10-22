@@ -28,3 +28,8 @@ venv/
 *.exe
 local.properties
 .flutter-plugins-dependencies
+
+# Videos fuente sin procesar (WhatsApp, con audio)
+videos/
+assets/video-src/
+.gstack/
