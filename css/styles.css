@@ -1063,6 +1063,47 @@ section {
   margin-bottom: var(--sp-4);
 }
 
+.contact-form { position: relative; }
+
+.form-status { margin-top: var(--sp-4); font-size: var(--fs-sm); text-align: center; color: #fff; }
+.form-status:empty { display: none; }
+.form-status.is-err { color: #ffd1dc; }
+.form-status a { color: #fff; text-decoration: underline; }
+
+.review-section { padding-block: var(--sp-10); background: var(--blue); }
+
+.review-card {
+  max-width: 760px;
+  margin-inline: auto;
+  display: grid;
+  gap: var(--sp-6);
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--r-lg);
+  padding: var(--sp-8);
+}
+
+.review-card h2 { color: #fff; margin-bottom: var(--sp-3); }
+.review-card p { color: rgba(255,255,255,0.85); margin-bottom: var(--sp-5); }
+
+.review-card__qr {
+  display: block;
+  background: #fff;
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  line-height: 0;
+}
+
+.review-card__qr img { width: 160px; height: 160px; image-rendering: pixelated; }
+
+@media (min-width: 720px) {
+  .review-card { grid-template-columns: 1fr auto; text-align: left; justify-items: start; }
+  .review-card__qr { justify-self: center; }
+}
+
 .contact-map {
   padding-bottom: var(--sp-10);
 }

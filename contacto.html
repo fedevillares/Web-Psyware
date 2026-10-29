@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css?v=20261020" />
+<link rel="stylesheet" href="css/styles.css?v=20261029" />
 <link rel="stylesheet" href="css/animations.css?v=20260731" />
 <link rel="stylesheet" href="css/responsive.css?v=20260731" />
 <link rel="stylesheet" href="css/chrome.css?v=20261019" />
@@ -84,7 +84,9 @@
           <label for="message">Mensaje</label>
           <textarea id="message" name="message" required></textarea>
         </div>
+        <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
         <button type="submit" class="btn btn-white btn-block">Enviar</button>
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -115,6 +117,21 @@
         </a>
         <h3>Acceso global:</h3>
         <a class="btn btn-white" href="https://www.camundanet.com/gratuitos" target="_blank" rel="noopener">5472640</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="review-section">
+    <div class="container">
+      <div class="review-card" data-reveal>
+        <div class="review-card__text">
+          <h2>Dejá tu opinión</h2>
+          <p>Tu experiencia con Psyware nos ayuda a mejorar y a que otras empresas nos conozcan. Escaneá el QR o hacé clic en el botón: te lleva a nuestra ficha de Google.</p>
+          <a class="btn btn-white" href="https://g.page/r/CY6hdFlBJBqIEBM/review" target="_blank" rel="noopener">★ Dejá tu reseña en Google</a>
+        </div>
+        <a class="review-card__qr" href="https://g.page/r/CY6hdFlBJBqIEBM/review" target="_blank" rel="noopener" aria-label="Escaneá el QR para dejar tu reseña en Google">
+          <img src="assets/img/google-review-qr.png" alt="Código QR para dejar una reseña de Psyware en Google" width="132" height="132" loading="lazy" />
+        </a>
       </div>
     </div>
   </section>
@@ -186,7 +203,7 @@
   </a>
 </div>
 
-<script src="js/main.js?v=20261020"></script>
+<script src="js/main.js?v=20261029"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

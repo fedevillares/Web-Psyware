@@ -8,6 +8,7 @@
 - WhatsApp: https://wa.me/5493412280272
 - Dirección: España 1116, S2000DBX Rosario, Santa Fe, Argentina
 - Formulario de contacto: https://www.psyware.ar/contacto.html (nombre, apellido, teléfono, email, mensaje)
+- Dejá tu opinión (reseña en Google, con QR): https://g.page/r/CY6hdFlBJBqIEBM/review
 
 ## Redes sociales
 

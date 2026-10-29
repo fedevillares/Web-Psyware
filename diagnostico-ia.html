@@ -340,6 +340,7 @@
     var btn=this; btn.disabled=true; var oldTxt=btn.textContent; btn.textContent='Enviando…';
     var payload={
       access_key: WEB3FORMS_KEY,
+      botcheck: '',
       subject: 'Autodiagnóstico madurez en IA'+(empresa?(' — '+empresa):(' — '+nombre)),
       from_name: 'Autodiagnóstico Psyware',
       replyto: email,
