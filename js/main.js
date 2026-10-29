@@ -135,14 +135,20 @@
   }
 
   /* ---------------------------------------------------------
-     Contact form — opens the user's email client via mailto
-     (static site, no backend/SMTP available to send directly).
+     Contact form — envío automático vía Web3Forms (mismo access key
+     que los autodiagnósticos; CSP ya permite api.web3forms.com).
      --------------------------------------------------------- */
   function initContactForm() {
     const form = document.getElementById("contactForm");
     if (!form) return;
 
-    const CONTACT_EMAIL = "fernando@psyware.ar";
+    const WEB3FORMS_KEY = "ae96a81b-fc42-41e3-a4c7-5c16fc1a9ba3";
+    const status = document.getElementById("contactStatus");
+
+    const setStatus = (kind, html) => {
+      status.className = "form-status is-" + kind;
+      status.innerHTML = html;
+    };
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -157,32 +163,50 @@
       const email = form.email.value.trim();
       const message = form.message.value.trim();
 
-      const subject = `Consulta desde psyware.ar — ${firstName} ${lastName}`;
-      const bodyLines = [
-        `Nombre: ${firstName} ${lastName}`,
-        `Email: ${email}`,
-        phone ? `Teléfono: ${phone}` : null,
-        "",
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        botcheck: form.botcheck.checked ? "1" : "",
+        subject: `Consulta desde psyware.ar — ${firstName} ${lastName}`,
+        from_name: "Contacto Psyware",
+        replyto: email,
+        Nombre: `${firstName} ${lastName}`,
+        Email: email,
+        "Teléfono": phone || "—",
         message,
-      ].filter((line) => line !== null);
-
-      const mailtoUrl =
-        `mailto:${CONTACT_EMAIL}` +
-        `?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+      };
 
       const submitBtn = form.querySelector("button[type='submit']");
       const originalLabel = submitBtn.textContent;
-      submitBtn.textContent = "Abriendo tu cliente de email…";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando…";
+      setStatus("info", "Enviando tu mensaje…");
 
-      window.location.href = mailtoUrl;
-
-      /* No se resetea el formulario: si no hay cliente de email configurado
-         (webmail, PC de oficina), el usuario no pierde lo que escribió */
-      setTimeout(() => {
-        submitBtn.textContent = originalLabel;
-      }, 2500);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((res) => res.json())
+        .then((d) => {
+          if (d && d.success) {
+            form.reset();
+            setStatus("ok", "✓ ¡Gracias, " + escapeHtml(firstName) + "! Recibimos tu mensaje y te respondemos a la brevedad.");
+          } else {
+            throw new Error("web3forms");
+          }
+        })
+        .catch(() => {
+          setStatus("err", 'No pudimos enviar el mensaje. Escribinos a <a href="mailto:contacto@psyware.ar">contacto@psyware.ar</a> o por WhatsApp.');
+        })
+        .then(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        });
     });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
   /* ---------------------------------------------------------
