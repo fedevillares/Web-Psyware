@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Autodiagnóstico Forense Digital | Psyware SSL</title>
+<meta name="description" content="Autoevaluación gratuita de pericias informáticas: cadena de custodia, hash, validez de WhatsApp y emails e ISO/IEC 27037. 20 preguntas explicadas." />
+<meta name="theme-color" content="#015eea" />
+<link rel="canonical" href="https://www.psyware.ar/diagnostico-forense.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Psyware SSL" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:title" content="Autodiagnóstico Forense Digital | Psyware SSL" />
+<meta property="og:description" content="Autoevaluación gratuita de pericias informáticas y evidencia digital: 20 preguntas con puntaje por área y respuestas explicadas." />
+<meta property="og:url" content="https://www.psyware.ar/diagnostico-forense.html" />
+<meta property="og:image" content="https://www.psyware.ar/assets/img/og-psyware.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Autodiagnóstico Forense Digital | Psyware SSL" />
+<meta name="twitter:description" content="Autoevaluación gratuita de pericias informáticas y evidencia digital: 20 preguntas con puntaje por área y respuestas explicadas." />
+<meta name="twitter:image" content="https://www.psyware.ar/assets/img/og-psyware.jpg" />
+<link rel="icon" href="assets/img/psyware-favicon.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css?v=20261020" />
+<link rel="stylesheet" href="css/animations.css?v=20260804" />
+<link rel="stylesheet" href="css/responsive.css?v=20260804" />
+<link rel="stylesheet" href="css/diagnostico.css?v=20261022" />
+<link rel="stylesheet" href="css/chrome.css?v=20261019" />
+</head>
+<body>
+<a class="skip-link" href="#quiz">Saltar al cuestionario</a>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+<header class="site-header is-top" id="navbar">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="index.html" aria-label="Psyware SSL, inicio">
+      <picture><source srcset="assets/img/psyware-logo-white.webp" type="image/webp"><img src="assets/img/psyware-logo-white.png" alt="Psyware SSL" width="1505" height="296" /></picture>
+    </a>
+    <nav class="site-nav" id="navMenu" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="acerca-de-nosotros.html">Acerca de Nosotros</a>
+      <a href="productos-y-servicios.html">Productos y Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="diagnosticos.html" aria-current="page">Diagnóstico</a>
+      <a href="prensa.html">Prensa</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <a class="ui-btn ui-btn--primary ui-btn--sm site-header__cta" href="https://wa.me/5493412280272?text=Hola%20Psyware%2C%20quiero%20pedir%20un%20diagn%C3%B3stico." target="_blank" rel="noopener" aria-label="Pedí un diagnóstico por WhatsApp"><span class="cta-long">Pedí un diagnóstico</span><span class="cta-short" aria-hidden="true">Diagnóstico</span></a>
+    <button class="site-header__toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<header class="diag-header">
+  <div class="container diag-wrap">
+    <span class="eyebrow"><span class="pulse"></span>Autoevaluación gratuita · Pericias informáticas</span>
+    <h1>¿Cuánto sabés de evidencia digital y pericias informáticas?</h1>
+    <p>Respondé 20 preguntas sobre adquisición forense, cadena de custodia, validez probatoria de mensajes y emails, artefactos técnicos y marco legal. Al terminar ves tu puntaje por área, las respuestas correctas y su explicación.</p>
+    <div class="diag-header__meta"><span>20 preguntas</span><span>~6 minutos</span><span>Gratis</span><span>Sin registro</span></div>
+  </div>
+</header>
+
+<div class="diag-progress" id="progressWrap">
+  <div class="diag-progress__inner">
+    <div class="diag-progress__row">
+      <div class="diag-progress__chip"><span id="progNum">0</span> / 20</div>
+      <div class="diag-progress__bar"><div class="diag-progress__fill" id="progressFill"></div></div>
+    </div>
+    <div class="diag-progress__pct" id="progPct">0%</div>
+  </div>
+</div>
+
+<main id="main">
+<form id="quiz" class="container diag-wrap diag-quiz" novalidate></form>
+
+<div class="container diag-wrap">
+  <section class="diag-capture" id="captureSec" aria-label="Datos para recibir el resultado">
+    <h3>Completá tus datos y recibí tu resultado</h3>
+    <p>Al enviar calculamos tu puntaje y te lo mandamos por email automáticamente. Una copia llega a nuestro equipo por si necesitás asesoramiento pericial. Sin compromiso.</p>
+    <div class="diag-row2">
+      <div class="field"><label for="fNombre">Nombre <span class="req">*</span></label><input type="text" id="fNombre" autocomplete="name" placeholder="Tu nombre"></div>
+      <div class="field"><label for="fEmpresa">Profesión u organización</label><input type="text" id="fEmpresa" autocomplete="organization" placeholder="Opcional, ej: abogada, estudio jurídico"></div>
+    </div>
+    <div class="diag-row2">
+      <div class="field"><label for="fEmail">Email <span class="req">*</span></label><input type="email" id="fEmail" autocomplete="email" placeholder="vos@email.com"></div>
+      <div class="field"><label for="fTel">Teléfono</label><input type="tel" id="fTel" autocomplete="tel" placeholder="Opcional"></div>
+    </div>
+    <div class="diag-form-err" id="formErr" role="alert"></div>
+    <button type="button" class="diag-btn" id="sendBtn">Enviar y ver mi resultado →</button>
+    <div class="diag-privacy">Tus respuestas y datos se envían de forma segura a contacto@psyware.ar y recibís una copia en tu email. Se usan solo para responder tu consulta.</div>
+  </section>
+</div>
+
+<section id="result" class="container diag-wrap diag-result" aria-live="polite">
+  <div class="diag-res-card">
+    <div class="diag-sent-banner" id="sentBanner"></div>
+    <div class="diag-res-head">
+      <div class="diag-res-badge" id="resBadge"><span class="dot"></span><span id="resBadgeTxt"></span></div>
+      <div class="diag-res-title" id="resTitle"></div>
+      <div class="diag-res-desc" id="resDesc"></div>
+      <div class="diag-gauge">
+        <div class="diag-gauge-num" id="gaugeNum"></div>
+        <div class="diag-gauge-bar"><div class="diag-gauge-fill" id="gaugeFill"></div></div>
+        <div class="diag-gauge-lbl"><span>Inicial</span><span>Respuestas correctas</span><span>Experto</span></div>
+      </div>
+    </div>
+    <div class="diag-counts diag-counts--domains" id="counts"></div>
+    <div class="diag-review" id="review"></div>
+    <div class="diag-res-foot">
+      <a href="https://wa.me/5493412280272?text=Hola%20Psyware,%20hice%20el%20autodiagn%C3%B3stico%20forense%20y%20necesito%20asesoramiento%20pericial" target="_blank" rel="noopener" class="diag-btn">Necesito un perito informático →</a>
+      <button type="button" class="diag-restart" id="restartBtn">Empezar de nuevo</button>
+    </div>
+  </div>
+</section>
+
+<p class="diag-disclaimer">Este cuestionario es una herramienta de autoevaluación orientativa sobre conocimientos de evidencia digital, no un dictamen pericial ni asesoramiento legal. Basado en ISO/IEC 27037, RFC 3227 y normativa procesal de prueba digital. Psyware SSL — seguridad informática y peritos informáticos matriculados a nivel nacional.</p>
+</main>
+
+<noscript><p style="text-align:center;padding:120px 24px;color:#4a4a4a">Este autodiagnóstico necesita JavaScript activado para funcionar. Podés escribirnos directamente a contacto@psyware.ar.</p></noscript>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <picture><source srcset="assets/img/psyware-logo-white.webp" type="image/webp"><img src="assets/img/psyware-logo-white.png" alt="Psyware SSL" width="1505" height="296" loading="lazy" /></picture>
+        <p>Soluciones en seguridad informática, telecomunicaciones y capacitación para empresas que no pueden fallar.</p>
+      </div>
+      <nav aria-label="Sitio">
+        <p class="site-footer__title">Navegación</p>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="acerca-de-nosotros.html">Acerca de Nosotros</a></li>
+          <li><a href="productos-y-servicios.html">Productos y Servicios</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="diagnosticos.html" aria-current="page">Diagnóstico</a></li>
+          <li><a href="prensa.html">Prensa</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="politica-de-privacidad.html">Política de Privacidad</a></li>
+          <li><a href="assets/pdf/brochure-intelix-psyware.pdf" target="_blank" rel="noopener">Descargar Brochure (PDF)</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="site-footer__title">Contacto</p>
+        <ul>
+          <li><a href="tel:+543412419258">+54 341 2419258</a></li>
+          <li><a href="tel:+543426460027">+54 342 6460027</a></li>
+          <li><a href="https://wa.me/5493412280272" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contacto@psyware.ar">contacto@psyware.ar</a></li>
+          <li><a href="https://maps.app.goo.gl/BehnoAJCyURJMsor6" target="_blank" rel="noopener">España 1116 — S2000DBX Rosario</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="site-footer__title">Redes Sociales</p>
+        <ul>
+          <li><a href="https://www.facebook.com/NTLXIngenieria" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/psyware_ssl" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/intelix-ingenieria-&amp;-telecomunicaciones" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/fmvillares" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>&copy; <span id="year">2026</span> Psyware SSL. Todos los derechos reservados.</p>
+      <a class="site-footer__afip" href="http://qr.afip.gob.ar/?qr=Lny1AnEBC1ELZ3IGXMPOgA,," target="_blank" rel="noopener">
+        <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="Data Fiscal AFIP" width="90" height="123" loading="lazy" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="fab__btn fab__btn--call" href="tel:+543412419258" aria-label="Llamar al +54 341 2419258">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab__btn fab__btn--wa" href="https://wa.me/5493412280272" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+  </a>
+</div>
+
+<script src="js/main.js?v=20261020"></script>
+<script>
+(function(){
+  var QDATA = [
+    {"b":"Adquisición Forense y Cadena de Custodia","q":"Durante un procedimiento en un equipo informático encendido, ¿cuál es el primer elemento de la jerarquía de volatilidad (RFC 3227) que un perito debe adquirir antes de apagar el sistema?","o":["Disco rígido SATA/NVMe","Memoria RAM y registros del procesador","Archivos temporales del sistema operativo","Logs del enrutador/router"],"c":1,"e":"La RFC 3227 establece que la memoria RAM y los registros del procesador son los elementos de mayor volatilidad y deben capturarse inmediatamente antes de cualquier apagado o modificación del equipo encendido."},
+    {"b":"Adquisición Forense y Cadena de Custodia","q":"Al realizar la adquisición forense de un disco magnético u óptico, ¿cuál es la función primordial de un bloqueador de escritura (write blocker) por hardware?","o":["Acelerar el proceso de lectura de la imagen forense","Impedir que el sistema operativo modifique el disco origen","Descifrar la información del disco en tiempo real","Evitar el sobrecalentamiento del dispositivo"],"c":1,"e":"El bloqueador de escritura intercepta los comandos de escritura enviados por el sistema operativo hacia la unidad de almacenamiento origen, garantizando la inalterabilidad de la evidencia primaria."},
+    {"b":"Adquisición Forense y Cadena de Custodia","q":"Si el valor HASH SHA-256 calculado al finalizar la clonación forense de una unidad difiere del valor calculado sobre el disco original, ¿qué consecuencia técnica tiene?","o":["Se debe aplicar un factor de corrección de sectores","La prueba se considera alterada y carece de integridad forense","Es un comportamiento normal debido al archivo de paginación","Basta con firmar una declaración jurada aclarando la discrepancia"],"c":1,"e":"Cualquier discrepancia entre el hash del original y la imagen duplicada demuestra que la evidencia ha sido alterada, rompiendo el principio de integridad y la cadena de custodia legal."},
+    {"b":"Adquisición Forense y Cadena de Custodia","q":"¿Qué tipo de extracción forense en un dispositivo celular permite acceder a particiones no asignadas y bases de datos eliminadas?","o":["Extracción lógica mediante comandos ADB/iTunes","Copia de seguridad en la nube (Cloud Backup)","Extracción física de bajo nivel o chip-off","Exportación de informes en PDF desde el teléfono"],"c":2,"e":"La extracción física realiza una copia bit a bit de la memoria NAND flash, permitiendo recuperar el espacio no asignado (unallocated space) e inspeccionar bases de datos SQLite eliminadas."},
+    {"b":"Adquisición Forense y Cadena de Custodia","q":"¿Cuál es el objetivo principal de introducir un dispositivo móvil en una bolsa de Faraday durante el secuestro en la escena del hecho?","o":["Evitar que la batería se descargue rápidamente","Bloquear las señales electromagnéticas y evitar el borrado remoto","Destruir la memoria RAM del celular por seguridad","Proteger el dispositivo contra golpes físicos"],"c":1,"e":"La jaula/bolsa de Faraday bloquea las señales de radiofrecuencia (celular, Wi-Fi, Bluetooth), evitando que el dispositivo reciba comandos de borrado o modificación remota."},
+    {"b":"Adquisición Forense y Cadena de Custodia","q":"Durante un allanamiento, un investigado apaga forzosamente su teléfono inteligente que poseía cifrado completo de disco (FDE). ¿Qué consecuencia crítica tiene este hecho sobre la investigación forense?","o":["El almacenamiento flash se auto-destruye físicamente","Las claves de cifrado temporales se borran de la memoria RAM activa","El teléfono envía un reporte automático a las autoridades","La tarjeta SIM queda inutilizada permanentemente"],"c":1,"e":"Al apagar el teléfono (pasando a estado BFU - Before First Unlock), se eliminan las claves de cifrado temporales residentes en la memoria RAM volátil, exigiendo la clave maestra o PIN para descifrar el almacenamiento."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"En el análisis forense de una fotografía digital, ¿por qué los metadatos EXIF no constituyen por sí solos una prueba irrefutable de autoría o localización?","o":["Porque los metadatos EXIF expiran automáticamente a las 24 horas","Porque los metadatos EXIF pueden modificarse mediante software común","Porque solamente la policía judicial posee licencias para leer metadatos EXIF","Porque los smartphones modernos no almacenan metadatos EXIF"],"c":1,"e":"Los metadatos EXIF carecen de firma criptográfica integrada y pueden ser fácilmente editados o falsificados mediante diversas herramientas de software libre o comercial."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"En la investigación sobre la autenticidad de un correo electrónico, ¿qué registro DNS permite validar la firma criptográfica del dominio emisor?","o":["Registro MX","Registro DKIM (DomainKeys Identified Mail)","Registro PTR (Reverse DNS)","Registro AAAA"],"c":1,"e":"DKIM adjunta una firma criptográfica en el encabezado del correo. El servidor receptor consulta la clave pública alojada en el registro TXT/DKIM del DNS del emisor para verificar la autenticidad del mensaje."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"En un proceso judicial, la querella presenta únicamente impresiones en papel de capturas de pantalla de WhatsApp. ¿Por qué esta evidencia presenta una fuerte vulnerabilidad técnica?","o":["Porque el papel no es admisible en juzgados penales","Porque es imposible verificar la autenticidad, metadatos e integridad de la imagen","Porque WhatsApp prohíbe explícitamente imprimir capturas de pantalla","Porque las capturas pierden nitidez al imprimirse"],"c":1,"e":"Una impresión o captura de pantalla aislada se puede alterar fácilmente mediante herramientas de edición visual o modificación del DOM en navegadores web, omitiendo las bases de datos originales y claves de descifrado."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"Para garantizar la inalterabilidad y validez judicial de una prueba digital documental en el tiempo, ¿qué combinación técnica es la indicada?","o":["Captura de pantalla enviada por e-mail a un colega","Firma digital válida con sellado de tiempo (Timestamping)","Marca de agua agregada en Microsoft Word","Conversión del archivo a PDF comprimido en ZIP"],"c":1,"e":"La firma digital otorga autenticidad e integridad criptográfica de origen, mientras que el sellado de tiempo (Timestamping) de una TSA otorga certeza jurídica sobre el momento exacto del sellado."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"En el análisis técnico de las cabeceras SMTP de un correo electrónico sospechoso de acoso digital, ¿qué encabezado indica la dirección IP de la máquina de origen?","o":["Campo Subject","Campo Content-Type","Las líneas del campo Received","Campo X-Priority"],"c":2,"e":"Las líneas 'Received:' son estampadas de forma consecutiva por los servidores de correo (MTA) en la ruta del correo, registrando las direcciones IP de origen y tránsito."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"Un perito analiza un documento de Microsoft Word (.docx) supuestamente redactado en 2018. ¿Dónde puede verificar los metadatos de autor, fechas de creación y edición?","o":["En las propiedades de la impresora utilizada","En la estructura interna XML de metadatos (docProps/core.xml)","En la papelera de reciclaje del sistema operativo","En el historial de navegación web"],"c":1,"e":"Los documentos en formato OOXML (.docx) son contenedores comprimidos en formato ZIP. Los metadatos de autoría y marcas de tiempo primarias se almacenan en el archivo docProps/core.xml."},
+    {"b":"Validez Probatoria de Mensajería y Emails","q":"En las aplicaciones de mensajería que utilizan Cifrado de Extremo a Extremo (E2EE), ¿dónde residen las claves privadas necesarias para descifrar los mensajes recabados?","o":["En los servidores centrales de la compañía proveedora del servicio","En los dispositivos finales de los usuarios que participan del chat","En las antenas de telefonía celular más cercanas","En una autoridad de certificación internacional"],"c":1,"e":"En la arquitectura E2EE, las claves privadas para descifrar la conversación residen de forma exclusiva en los terminales de los usuarios interlocutores."},
+    {"b":"Artefactos de Sistema y Análisis Técnico","q":"Al inspeccionar un sistema operativo Windows, ¿qué artefacto forense registra la ejecución previa de aplicaciones, la fecha y la cantidad de ejecuciones?","o":["El archivo hosts del sistema","Los archivos Prefetch del directorio de sistema","Las cookies de navegación del usuario","El registro Boot Sector"],"c":1,"e":"El componente Prefetch de Windows genera archivos .pf que guardan evidencia del ejecutable, ruta de origen, conteo de ejecuciones y las últimas marcas temporales de ejecución."},
+    {"b":"Artefactos de Sistema y Análisis Técnico","q":"¿Qué combinación de bytes en encabezado hexadecimal (Magic Bytes / File Signature) indica que se trata de un archivo ejecutable en formato PE de Windows?","o":["89 50 4E 47 (PNG)","4D 5A (MZ - Ejecutable Windows PE)","25 50 44 46 (PDF)","50 4B 03 04 (ZIP)"],"c":1,"e":"Los bytes '4D 5A' corresponden a las iniciales 'MZ' (Mark Zbikowski), que señalan la cabecera estándar de ejecutables y librerías DLL del formato PE de Windows."},
+    {"b":"Artefactos de Sistema y Análisis Técnico","q":"Al investigar la filtración de documentos alojados en un servicio de almacenamiento en la nube, ¿cuál es el principal desafío jurisdiccional y procesal para el perito?","o":["La falta de cables de conexión","La dispersión geográfica y multijurisdiccional de los servidores físicos","Que el software libre impida la extracción","La velocidad de descarga de la conexión a Internet"],"c":1,"e":"Los datos en la nube suelen distribuirse en múltiples servidores radicados en países extranjeros, requiriendo tratados de asistencia jurídica mutua (MLAT) o normativas de ciberdelincuencia internacional."},
+    {"b":"Marco Legal, Normativa ISO y Delitos Digitales","q":"¿Cuál es la norma internacional que define las directrices y principios para la identificación, recolección, adquisición y preservación de evidencia digital?","o":["ISO 9001","ISO/IEC 27037","RFC 1918","IEEE 802.11"],"c":1,"e":"La norma ISO/IEC 27037 proporciona las directrices reconocidas internacionalmente para la gestión estandarizada de evidencia digital y preservación de la cadena de custodia."},
+    {"b":"Marco Legal, Normativa ISO y Delitos Digitales","q":"Desde el punto de vista jurídico-penal y técnico, ¿cuál es el rasgo distintivo del delito de Grooming?","o":["El envío masivo de correos de contenido publicitario no solicitado","El acoso deliberado a un menor de edad mediante TIC para atentar contra su integridad sexual","El secuestro informático de datos mediante cifrado no autorizado","La suplantación de identidad en sitios de comercio electrónico"],"c":1,"e":"El Grooming consiste en la acción deliberada mediante herramientas digitales por la cual un adulto contacta y busca ganarse la confianza de un menor de edad con fines de abuso sexual."},
+    {"b":"Marco Legal, Normativa ISO y Delitos Digitales","q":"En el contexto del Cyberbullying, ¿cuál es la primera medida forense que debe adoptar la víctima para preservar las pruebas en una red social?","o":["Bloquear y eliminar inmediatamente la cuenta del agresor","Preservar las URL, identificadores de cuenta y realizar una constatación forense o notarial","Formatear inmediatamente el celular o la computadora","Cambiar la contraseña del punto de acceso WiFi"],"c":1,"e":"Es indispensable documentar de inmediato la URL completa, identificadores de perfil y realizar un acta de constatación notarial o preservación forense antes de que las publicaciones se eliminen."},
+    {"b":"Marco Legal, Normativa ISO y Delitos Digitales","q":"En un proceso judicial penal o civil, ¿cuál es el rol principal del Perito de Parte o Consultor Técnico?","o":["Dictar la sentencia de mérito final del juzgado","Asesorar técnicamente a su parte y controlar la labor del perito oficial","Representar legalmente al imputado como abogado defensor","Detener al sospechoso en caso de hallar evidencias"],"c":1,"e":"El Perito de Parte (o Consultor Técnico) asesora técnicamente a la parte que lo propuso, audita el procedimiento de prueba ejecutado por el perito oficial y realiza las impugnaciones u observaciones técnicas."}
+  ];
+  var TOTAL=QDATA.length;
+  var quiz=document.getElementById('quiz');
+  var answers={};
+  var LETTERS=['A','B','C','D'];
+  function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  var curBlock=null, bi=0;
+  QDATA.forEach(function(q,i){
+    if(q.b!==curBlock){
+      curBlock=q.b; bi++;
+      var bh=document.createElement('div');
+      bh.className='diag-block-head';
+      bh.innerHTML='<span class="bn">'+String(bi).padStart(2,'0')+'</span>'+q.b;
+      quiz.appendChild(bh);
+    }
+    var card=document.createElement('div');
+    card.className='diag-q'; card.id='q'+i;
+    var top='<div class="diag-q__top"><div class="diag-q__num">'+(i+1)+'</div><div><div class="diag-q__text">'+escapeHtml(q.q)+'</div></div></div>';
+    var opts='<div class="diag-opts">';
+    q.o.forEach(function(txt,oi){
+      var L=LETTERS[oi];
+      opts+='<label class="diag-opt is-radio"><input type="radio" name="q'+i+'" value="'+L+'"><span class="diag-mark"></span><span class="diag-otxt"><span class="diag-ltr">'+L+')</span> '+escapeHtml(txt)+'</span></label>';
+    });
+    opts+='</div>';
+    card.innerHTML=top+opts;
+    quiz.appendChild(card);
+  });
+  quiz.addEventListener('change', function(e){
+    var inp=e.target; if(inp.tagName!=='INPUT') return;
+    var idx=parseInt(inp.name.slice(1),10);
+    var card=document.getElementById('q'+idx);
+    answers[idx]=inp.value;
+    card.querySelectorAll('.diag-opt').forEach(function(o){ o.classList.toggle('is-selected', o.querySelector('input').checked); });
+    card.classList.add('is-answered');
+    card.classList.remove('is-missing');
+    updateProgress();
+  });
+  function updateProgress(){
+    var done=Object.keys(answers).length;
+    var pct=Math.round(done/TOTAL*100);
+    document.getElementById('progNum').textContent=done;
+    document.getElementById('progressFill').style.width=pct+'%';
+    document.getElementById('progPct').textContent=pct+'%';
+  }
+  function compute(){
+    var ok=0, domains=[], byName={};
+    QDATA.forEach(function(q,i){
+      var d=byName[q.b];
+      if(!d){ d=byName[q.b]={name:q.b,ok:0,n:0}; domains.push(d); }
+      d.n++;
+      if(answers[i]===LETTERS[q.c]){ ok++; d.ok++; }
+    });
+    var idx=Math.round(ok/TOTAL*100);
+    var level=idx>=85?'A':idx>=60?'B':idx>=35?'C':'D';
+    return {ok:ok, idx:idx, level:level, domains:domains};
+  }
+  var LEVELS={
+    A:{txt:'Nivel experto',color:'var(--blue)',rgb:'1,94,234',title:'Dominio sólido de la prueba digital',
+       desc:'Manejás con solvencia los principios de adquisición, integridad y validez probatoria. Para un caso concreto, un perito matriculado puede auditar el procedimiento y respaldarlo en el expediente.'},
+    B:{txt:'Nivel avanzado',color:'#e8b455',rgb:'232,180,85',title:'Buenas bases, con áreas a reforzar',
+       desc:'Conocés los conceptos centrales, pero hay temas donde un error técnico podría costar la validez de la prueba. Revisá las explicaciones de abajo en las áreas con menor puntaje.'},
+    C:{txt:'Nivel intermedio',color:'#e8b455',rgb:'232,180,85',title:'Conocimiento parcial',
+       desc:'Hay nociones generales, pero varios puntos críticos (cadena de custodia, hash, validez de capturas) todavía no están firmes. Ante un caso real conviene contar con asesoramiento pericial desde el inicio.'},
+    D:{txt:'Nivel inicial',color:'var(--pink)',rgb:'242,41,91',title:'Riesgo alto de perder la prueba',
+       desc:'La evidencia digital es frágil: un paso mal dado la vuelve impugnable. Si tenés un caso en curso, no manipules los dispositivos ni las cuentas y consultá a un perito informático antes de avanzar.'}
+  };
+  var WEB3FORMS_KEY = "ae96a81b-fc42-41e3-a4c7-5c16fc1a9ba3";
+
+  function showResult(r){
+    var lv=LEVELS[r.level];
+    var b=document.getElementById('resBadge');
+    b.style.color=lv.color; b.style.background='rgba('+lv.rgb+',0.10)'; b.style.border='1px solid rgba('+lv.rgb+',0.4)';
+    b.querySelector('.dot').style.background=lv.color;
+    document.getElementById('resBadgeTxt').textContent=lv.txt;
+    document.getElementById('resTitle').textContent=lv.title;
+    document.getElementById('resDesc').textContent=lv.desc;
+    document.getElementById('gaugeNum').textContent=r.ok+' / '+TOTAL;
+    document.getElementById('gaugeNum').style.color=lv.color;
+    var gf=document.getElementById('gaugeFill');
+    var c=document.getElementById('counts'); c.innerHTML='';
+    r.domains.forEach(function(d){
+      var el=document.createElement('div'); el.className='diag-count';
+      el.innerHTML='<b>'+d.ok+'/'+d.n+'</b><span>'+escapeHtml(d.name)+'</span>';
+      c.appendChild(el);
+    });
+    var html='<div class="diag-review__title">Repaso de respuestas</div>';
+    QDATA.forEach(function(q,i){
+      var mine=answers[i], right=LETTERS[q.c], hit=mine===right;
+      html+='<div class="diag-review__item"><div class="diag-review__q">'+(i+1)+'. '+escapeHtml(q.q)+'</div>';
+      if(!hit) html+='<div class="diag-review__ans is-wrong"><b>Tu respuesta</b>'+mine+') '+escapeHtml(q.o[LETTERS.indexOf(mine)])+'</div>';
+      html+='<div class="diag-review__ans is-right"><b>'+(hit?'Correcta':'Respuesta correcta')+'</b>'+right+') '+escapeHtml(q.o[q.c])+'</div>';
+      html+='<div class="diag-review__exp">'+escapeHtml(q.e)+'</div></div>';
+    });
+    document.getElementById('review').innerHTML=html;
+    document.getElementById('captureSec').style.display='none';
+    document.getElementById('result').classList.add('is-shown');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(function(){ gf.style.width=r.idx+'%'; },120);
+  }
+
+  function buildDetail(nombre,org,email,tel,r,lv){
+    var lines=[];
+    lines.push('CONTACTO');
+    lines.push('Nombre: '+nombre);
+    if(org) lines.push('Profesión / organización: '+org);
+    lines.push('Email: '+email);
+    if(tel) lines.push('Teléfono: '+tel);
+    lines.push('');
+    lines.push('RESULTADO');
+    lines.push('Nivel: '+lv.txt);
+    lines.push('Respuestas correctas: '+r.ok+' de '+TOTAL+' ('+r.idx+'%)');
+    r.domains.forEach(function(d){ lines.push('- '+d.name+': '+d.ok+'/'+d.n); });
+    lines.push('');
+    lines.push('DETALLE DE RESPUESTAS');
+    QDATA.forEach(function(q,i){
+      var right=LETTERS[q.c];
+      lines.push((i+1)+'. ['+answers[i]+(answers[i]===right?' ✓':' ✗ correcta: '+right)+'] '+q.q);
+    });
+    return lines.join('\n');
+  }
+
+  document.getElementById('sendBtn').addEventListener('click', function(){
+    var err=document.getElementById('formErr');
+    var missing=[];
+    for(var i=0;i<TOTAL;i++){ if(!answers[i]) missing.push(i); }
+    if(missing.length){
+      err.textContent='Te faltan '+missing.length+' pregunta'+(missing.length>1?'s':'')+' por responder antes de enviar.';
+      missing.forEach(function(i){document.getElementById('q'+i).classList.add('is-missing');});
+      document.getElementById('q'+missing[0]).scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    var nombre=document.getElementById('fNombre').value.trim();
+    var org=document.getElementById('fEmpresa').value.trim();
+    var email=document.getElementById('fEmail').value.trim();
+    var tel=document.getElementById('fTel').value.trim();
+    if(!nombre){ err.textContent='Ingresá tu nombre.'; document.getElementById('fNombre').focus(); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Ingresá un email válido.'; document.getElementById('fEmail').focus(); return; }
+    err.textContent='';
+    var r=compute(); var lv=LEVELS[r.level];
+    var detail=buildDetail(nombre,org,email,tel,r,lv);
+    var btn=this; btn.disabled=true; var oldTxt=btn.textContent; btn.textContent='Enviando…';
+    var payload={
+      access_key: WEB3FORMS_KEY,
+      subject: 'Autodiagnóstico forense digital — '+nombre,
+      from_name: 'Autodiagnóstico Psyware',
+      replyto: email,
+      Nombre: nombre, 'Profesión / organización': org||'—', Email: email, 'Teléfono': tel||'—',
+      Nivel: lv.txt, 'Respuestas correctas': r.ok+' de '+TOTAL+' ('+r.idx+'%)',
+      message: detail
+    };
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST', headers:{'Content-Type':'application/json',Accept:'application/json'}, body: JSON.stringify(payload)
+    }).then(function(res){return res.json();}).then(function(d){
+      var sb=document.getElementById('sentBanner');
+      if(d && d.success){
+        sb.style.background='rgba(1,94,234,.08)'; sb.style.color='var(--text)';
+        sb.innerHTML='✓ Listo, '+escapeHtml(nombre.split(" ")[0])+'. Te enviamos el resultado a <strong>'+escapeHtml(email)+'</strong> y una copia llegó a nuestro equipo. Revisá tu bandeja (y el spam, por las dudas).';
+      } else {
+        sb.style.background='rgba(242,41,91,.08)'; sb.style.color='var(--text)';
+        sb.innerHTML='Tu resultado está abajo, pero no pudimos enviar el email automáticamente. Escribinos a <a href="mailto:contacto@psyware.ar" style="color:var(--blue)">contacto@psyware.ar</a> y lo resolvemos.';
+      }
+      showResult(r);
+    }).catch(function(){
+      var sb=document.getElementById('sentBanner');
+      sb.style.background='rgba(242,41,91,.08)'; sb.style.color='var(--text)';
+      sb.innerHTML='Tu resultado está abajo. No pudimos enviar el email (revisá tu conexión). Escribinos a <a href="mailto:contacto@psyware.ar" style="color:var(--blue)">contacto@psyware.ar</a>.';
+      showResult(r);
+    }).then(function(){ btn.disabled=false; btn.textContent=oldTxt; });
+  });
+  document.getElementById('restartBtn').addEventListener('click', function(){
+    answers={};
+    quiz.querySelectorAll('input').forEach(function(x){x.checked=false;});
+    quiz.querySelectorAll('.diag-opt').forEach(function(o){o.classList.remove('is-selected');});
+    quiz.querySelectorAll('.diag-q').forEach(function(o){o.classList.remove('is-answered','is-missing');});
+    document.getElementById('result').classList.remove('is-shown');
+    document.getElementById('sentBanner').innerHTML='';
+    document.getElementById('review').innerHTML='';
+    document.getElementById('captureSec').style.display='';
+    ['fNombre','fEmpresa','fEmail','fTel'].forEach(function(id){document.getElementById(id).value='';});
+    document.getElementById('formErr').textContent='';
+    updateProgress();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.psyware.ar/"},
+    {"@type":"ListItem","position":2,"name":"Autodiagnósticos","item":"https://www.psyware.ar/diagnosticos.html"},
+    {"@type":"ListItem","position":3,"name":"Autodiagnóstico Forense Digital","item":"https://www.psyware.ar/diagnostico-forense.html"}
+  ]
+}
+</script>
+</body>
+</html>
